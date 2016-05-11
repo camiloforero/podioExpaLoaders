@@ -4,11 +4,13 @@ from django_podio import api
 from django_expa import expaApi
 
 def mc_daily_load():
-    #ex_api = expaApi.ExpaApi("sebastian.ramirezc@aiesec.net")
-    #accepted_apps = ex_api.get_past_interactions('accepted', 1, 1551, False)
-    ex_api = expaApi.ExpaApi("futurecolombia@co.aiesec.org")
-    future_colombia_apps = ex_api.get_past_interactions('applied', 1, 1551, False, program='icx')
-    #load_accepted_apps(accepted_apps)
+    ex_api = expaApi.ExpaApi("sebastian.ramirezc@aiesec.net")
+    accepted_apps = ex_api.get_past_interactions('accepted', 1, 1551, False)
+    ex_api2 = expaApi.ExpaApi("futurecolombia@co.aiesec.org")
+    future_colombia_apps = ex_api2.get_past_interactions('applied', 1, 1551, False, program='icx')
+    print 'Loading all accepted EPs'
+    load_accepted_apps(accepted_apps)
+    print 'Loading Future Colombia applicants'
     load_future_colombia_eps(future_colombia_apps)
     return future_colombia_apps
 
