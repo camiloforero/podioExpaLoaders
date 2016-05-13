@@ -5,7 +5,7 @@ from django_expa import expaApi
 
 def andes_daily_load():
     ex_api = expaApi.ExpaApi("sebastian.ramirezc@aiesec.net")
-    approved_apps = ex_api.get_past_interactions('approved', 24, 1395, False)
+    approved_apps = ex_api.get_past_interactions('approved', 1, 1395, False)
     load_approved_apps(approved_apps)
 
 def load_approved_apps(approved_apps):
