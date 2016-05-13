@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django_podio import api
 from django_expa import expaApi
+from django_mailTemplates import mailApi
 
 def mc_daily_load():
     ex_api = expaApi.ExpaApi("sebastian.ramirezc@aiesec.net")
@@ -56,6 +57,15 @@ def load_future_colombia_eps(applications):
         try:
             p_api.create_item({'fields':attributes})
             print 'se ha cargado %s' % (attributes[121611386])
+            email = mailApi.MailApi('expa_future_bienvenida')
+            context = {
+                'name':app['person']['first_name'],
+                'full_name':'%s %s' % (app['person']['first_name'], app['person']['last_name']),
+                'opportunity_id':unicode(app['opportunity']['id']),
+                }
+            email.send_mail('futurecolombia@co.aiesec.org', app['person']['email'], context, sender_name="Future Colombia")
+            print 'El correo se ha enviado exitosamente'
+
         except api.api.transport.TransportException as te:
             print te
             print app
