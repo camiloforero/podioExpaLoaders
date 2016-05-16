@@ -1,1 +1,2 @@
+PYTHONIOENCODING=utf8
 30 0 * * * /var/www/yellowPlatform/yellowEnv/bin/python /var/www/yellowPlatform/manage.py andes_daily >> /tmp/cronlog_expa_podio_andes.txt 2>&1

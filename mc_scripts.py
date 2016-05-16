@@ -44,6 +44,7 @@ def load_accepted_apps(accepted_apps):
 
 def load_future_colombia_eps(applications):
     p_api = api.PodioApi(15735627)
+    email = mailApi.MailApi('expa_future_bienvenida')
     for app in applications['items']:
         attributes = {
             121611498:app['person']['first_name'],
@@ -57,7 +58,6 @@ def load_future_colombia_eps(applications):
         try:
             p_api.create_item({'fields':attributes})
             print 'se ha cargado %s' % (attributes[121611386])
-            email = mailApi.MailApi('expa_future_bienvenida')
             context = {
                 'name':app['person']['first_name'],
                 'full_name':'%s %s' % (app['person']['first_name'], app['person']['last_name']),
