@@ -32,7 +32,7 @@ def load_accepted_apps(accepted_apps):
         try:
             p_api.create_item({'fields':attributes})
             print 'se ha cargado %s' % (attributes[120998813])
-        except api.api.transport.TransportException as te:
+        except api.api.transport.TransportException as te: #Transport exceptions happen when the Podio API fails
             print te
             print app
             try:
