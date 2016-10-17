@@ -2,6 +2,10 @@
 Módulos de carga de datos de EXPA a PODIO
 =========================================
 
+AVISO
+------
+Este módulo se va a generalizar/deprecar para correr los scripts a yellowCrons. El procedimiento está aún por definir
+
 Introducción
 -------------
 
